@@ -1,0 +1,5 @@
+<div *ngIf="open" class="modal">
+    <h2>Add new movie</h2>
+    <app-movie-form (closeModalEvent)="onClose($event)"></app-movie-form>
+    <button type="button" (click)="onClose(false)" class="close">X</button>
+</div>

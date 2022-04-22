@@ -1,0 +1,27 @@
+<header>
+    <h2>My Favorites</h2>
+</header>
+<main>
+    <table>
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of favorites; index as indexOfElement">
+                <td>{{ indexOfElement }}</td>
+                <td>
+                    <a routerLink="/detail/{{ movie.id }}">
+                        {{ movie.name }}
+                    </a>
+                </td>
+                <td>{{ movie.category }}</td>
+                <td>{{ movie.rating ? movie.rating : "" }}</td>
+            </tr>
+        </tbody>
+    </table>
+</main>

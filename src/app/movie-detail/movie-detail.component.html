@@ -1,0 +1,11 @@
+<div *ngIf="movie">
+    <h2>{{ movie.name | uppercase }} Details</h2>
+    <div>
+        <app-movie-form></app-movie-form>
+        <button type="button" (click)="deleteMovie()">Delete</button>
+        <button type="button" (click)="movie.favorite ? removeFromFavorites() : addToFavorites()">
+            {{ movie.favorite ? "- Remove from favorites" : "+ Add to favorites" }}
+        </button>
+        <button type="button" (click)="goBack()">Go back</button>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+{
+  "movies": [
+    {
+      "id": "1",
+      "name": "The Lord Of The Rings",
+      "category": "Roman/Fantasy",
+      "watched": true,
+      "rating": 2,
+      "favorite": true
+    },
+    {
+      "id": "2",
+      "name": "The Revenant",
+      "category": "Western/Aventure"
+    },
+    {
+      "id": "3",
+      "name": "Very Bad Trip",
+      "category": "comedy"
+    },
+    {
+      "id": "4",
+      "name": "Gone girl",
+      "category": "thriller",
+      "watched": true,
+      "rating": "4",
+      "favorite": false
+    },
+    {
+      "id": "7a2f9cca-24a4-4c37-b8c2-4ccdbd127d5b",
+      "name": "Test",
+      "category": "test"
+    },
+    {
+      "id": "71488692-727b-44ae-bf54-6e33cbf64b13",
+      "name": "Skyfall",
+      "category": "Action",
+      "watched": true,
+      "rating": "3",
+      "favorite": false
+    },
+    {
+      "id": "f0a22798-be5e-4dff-ac32-1a92056abdfa",
+      "name": "007",
+      "category": "Action"
+    },
+    {
+      "id": "3f91cfd7-96a9-4d38-b1dd-b63c063bc2be",
+      "name": "Abba",
+      "category": "Musical",
+      "watched": "",
+      "rating": 0
+    },
+    {
+      "id": "5e9819b0-5bda-4210-8789-64c555b3fc04",
+      "name": "Frozen",
+      "category": "Fantasy"
+    },
+    {
+      "id": "f87419d0-2b1b-49e7-89d6-10db76949b68",
+      "name": "Test 2",
+      "category": "test"
+    },
+    {
+      "id": "ab75d952-b062-4c1a-a30d-07feed147294",
+      "name": "Avatars",
+      "category": "scifi"
+    },
+    {
+      "id": "1b4d9035-1a6a-4d38-8d97-fa8fe7cee0a9",
+      "name": "Don't look up",
+      "category": "drama"
+    },
+    {
+      "id": "77a82f59-7609-4db0-ac5a-f6ad5670ae28",
+      "name": "Test",
+      "category": "test"
+    },
+    {
+      "id": "4cab1659-96a3-4818-bcc4-5b54dc178338",
+      "name": "Lupin",
+      "category": "action"
+    },
+    {
+      "id": "254644f0-11e1-41cd-b7fa-706a0736048a",
+      "name": "Demon Slayer",
+      "category": "action"
+    },
+    {
+      "id": "4f7d5c3b-fc5e-4174-a0d4-6305e34d89e1",
+      "name": "Test Close",
+      "category": "test"
+    },
+    {
+      "id": "8a5fe911-dc96-4f28-bbbb-329ca1e04d8c",
+      "name": "Test3",
+      "category": "test",
+      "description": "",
+      "rating": 0,
+      "watched": ""
+    },
+    {
+      "id": "60b8f3aa-a808-4358-8496-76d6423be72a",
+      "name": "Test 4",
+      "category": "thriller",
+      "description": "",
+      "rating": 5,
+      "watched": true
+    }
+  ],
+  "favorites": [
+    {
+      "id": "1",
+      "name": "The Lord of the Rings",
+      "category": "Roman/Fantasy"
+    },
+    {
+      "id": "2",
+      "name": "The Revenant",
+      "category": "Western/Aventure"
+    },
+    {
+      "id": "3",
+      "name": "Very Bad Trip",
+      "category": "comedy"
+    },
+    {
+      "id": "71488692-727b-44ae-bf54-6e33cbf64b13",
+      "name": "Skyfall",
+      "category": "Action"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<form [formGroup]="movieForm" (ngSubmit)="onSubmit()" class="form-group">
+    <div class="form-control">
+        <label for="name">Name: </label>
+        <input type="text" id="name" formControlName="name" />
+    </div>
+    <div class="form-control">
+        <label for="category">Category: </label>
+        <input type="text" id="category" formControlName="category" />
+    </div>
+    <div class="form-control">
+        <label for="watched">Watched?</label>
+        <input type="checkbox" id="watched" formControlName="watched" />
+    </div>
+    <div *ngIf="movieForm.value.watched" class="form-control">
+        <label for="number">Rating: </label>
+        <select id="rating" formControlName="rating">
+            <option *ngFor="let rating of ratings" [value]="rating">{{ rating }}</option>
+        </select>
+    </div>
+    <button type="submit" [disabled]="!movieForm.valid">Submit</button>
+</form>
