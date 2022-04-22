@@ -10,7 +10,7 @@ export class LocalStorageService {
     getMovies(query: { name?: string; category?: string; rating?: number; favorite?: boolean } = {}): Movie[] {
         const movies = JSON.parse(localStorage.getItem("movies") || "[]");
 
-        if (Object.keys(query).length > 0) {
+        if (Object.keys(query).length > 0 && !Object.values(query).every((value) => !value)) {
             return movies.filter((movie: any) =>
                 Object.entries(query).some(([key, value]: [string, string | boolean | number]) => movie[key] === value)
             );

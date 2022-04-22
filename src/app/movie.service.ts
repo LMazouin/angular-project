@@ -30,7 +30,7 @@ export class MovieService {
     ) {}
 
     getMovies(query: Query): Movie[] {
-        return this.localStorageService.getMovies();
+        return this.localStorageService.getMovies(query);
     }
 
     addMovie(newMovie: NewMovie): void {
