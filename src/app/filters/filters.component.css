@@ -9,6 +9,7 @@
 }
 
 .form-control input {
+    min-width: 15rem;
     width: 50%;
     max-width: 10rem;
 }
