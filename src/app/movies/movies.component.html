@@ -3,15 +3,7 @@
     <button type="button" (click)="onOpen()">+ Add new movie</button>
 </header>
 <main>
-    <form [formGroup]="movieFilter" (ngSubmit)="onSubmit()">
-        <label for="name">Name: </label>
-        <input type="search" id="name" formControlName="name" (change)="onSubmit()" />
-        <label for="category">Category: </label>
-        <input type="search" id="category" formControlName="category" />
-        <label for="rating">Rating: </label>
-        <input type="search" id="rating" formControlName="rating" />
-        <button type="submit">Search</button>
-    </form>
+    <app-filters (submitEvent)="onSubmit($event)"></app-filters>
     <table>
         <thead>
             <tr>
@@ -23,7 +15,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let movie of movies; index as indexOfElement">
-                <td>{{ indexOfElement }}</td>
+                <td>{{ indexOfElement + 1 }}</td>
                 <td>
                     <a routerLink="/detail/{{ movie.id }}">
                         {{ movie.name }}

@@ -1,17 +1,14 @@
 .form-group {
     display: flex;
-    flex-direction: column;
+    justify-content: start;
 }
 
 .form-control {
     display: flex;
-    justify-content: start;
     align-items: center;
-    margin: 1rem;
 }
 
-.form-control label {
+.form-control input {
     width: 50%;
     max-width: 10rem;
-    margin-right: 1rem;
 }

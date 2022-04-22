@@ -12,7 +12,9 @@ export class LocalStorageService {
 
         if (Object.keys(query).length > 0 && !Object.values(query).every((value) => !value)) {
             return movies.filter((movie: any) =>
-                Object.entries(query).some(([key, value]: [string, string | boolean | number]) => movie[key] === value)
+                Object.entries(query)
+                    .filter(([key, value]) => key && value)
+                    .every(([key, value]: [string, string | boolean | number]) => movie[key] === value)
             );
         }
 

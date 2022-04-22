@@ -1,4 +1,10 @@
-<h2>Top Movies</h2>
-<div class="movies-menu">
-    <a *ngFor="let movie of movies" routerLink="/detail/{{ movie.id }}">{{ movie.name }}</a>
-</div>
+<header>
+    <h2>Top-rated Movies</h2>
+</header>
+<main>
+    <ol class="top-movies">
+        <li *ngFor="let movie of movies; index as indexOfElement">
+            {{ indexOfElement + 1 }}. <a routerLink="/detail/{{ movie.id }}">{{ movie.name }}</a> {{ movie.rating }}/5
+        </li>
+    </ol>
+</main>

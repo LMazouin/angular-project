@@ -13,9 +13,9 @@ export class FavoritesComponent implements OnInit {
     constructor(private movieService: MovieService) {}
 
     ngOnInit(): void {
-        this.getFavorites();
+        this.getFavorites({});
     }
-    getFavorites(): void {
-        this.favorites = this.movieService.getMovies({ favorite: true });
+    getFavorites(query: { name?: string; category?: string; rating?: number }): void {
+        this.favorites = this.movieService.getMovies({ ...query, favorite: true });
     }
 }

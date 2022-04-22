@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { MessageService } from "../message.service";
+import { ActivatedRoute } from "@angular/router";
+import { EventService } from "../event.service";
 
 import { Movie } from "../movie";
 import { MovieService } from "../movie.service";
@@ -12,23 +12,24 @@ import { MovieService } from "../movie.service";
 })
 export class MoviesComponent implements OnInit {
     movies: Movie[] = [];
-    movieFilter = new FormGroup({
-        name: new FormControl(""),
-        category: new FormControl(""),
-        rating: new FormControl(""),
-    });
 
     isOpenModal: boolean = false;
 
-    constructor(private movieService: MovieService, private messageService: MessageService) {}
+    constructor(
+        private route: ActivatedRoute,
+        private eventService: EventService,
+        private movieService: MovieService
+    ) {}
 
     ngOnInit(): void {
-        this.getMovies({});
+        this.eventService.getMoviesEventListener().subscribe((movies) => (this.movies = movies));
+        this.route.queryParams.subscribe((params) => {
+            this.getMovies(params);
+        });
     }
 
-    onSubmit(): void {
-        const { name, category, rating } = this.movieFilter.value;
-        this.messageService.add(`filter movies by ${name}`);
+    onSubmit(query: { name?: string; category?: string; rating?: number }): void {
+        const { name, category, rating } = query;
         this.getMovies({ name, category, rating });
     }
 

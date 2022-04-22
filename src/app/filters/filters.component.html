@@ -1,0 +1,14 @@
+<form class="form-group" [formGroup]="movieFilter" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label for="name">Name: </label>
+        <input type="search" id="name" formControlName="name" (input)="onSubmit()" />
+    </div>
+    <div class="form-control">
+        <label for="category">Category: </label>
+        <input type="search" id="category" formControlName="category" (input)="onSubmit()" />
+    </div>
+    <div class="form-control">
+        <label for="rating">Rating: </label>
+        <input type="search" id="rating" formControlName="rating" (input)="onSubmit()" />
+    </div>
+</form>

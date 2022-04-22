@@ -17,5 +17,5 @@
             <option *ngFor="let rating of ratings" [value]="rating">{{ rating }}</option>
         </select>
     </div>
-    <button type="submit" [disabled]="!movieForm.valid">Submit</button>
+    <button type="submit" [disabled]="!movieForm.valid">{{ isNewMovie ? "Submit" : "Save changes" }}</button>
 </form>

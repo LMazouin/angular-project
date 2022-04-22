@@ -31,23 +31,17 @@ export class MovieDetailComponent implements OnInit {
 
     deleteMovie(): void {
         this.movieService.deleteMovie(this.movie?.id || "");
-        this.router.navigate(["movies"]).then(() => {
-            window.location.reload();
-        });
+        this.router.navigate(["movies"]);
     }
 
     addToFavorites(): void {
         if (this.movie) this.movieService.addToFavorites(this.movie);
-        this.router.navigate(["favorites"]).then(() => {
-            window.location.reload();
-        });
+        this.router.navigate(["favorites"]);
     }
 
     removeFromFavorites(): void {
         if (this.movie) this.movieService.removeFromFavorites(this.movie);
-        this.router.navigate(["favorites"]).then(() => {
-            window.location.reload();
-        });
+        this.router.navigate(["favorites"]);
     }
 
     goBack(): void {

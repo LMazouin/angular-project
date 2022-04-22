@@ -96,7 +96,6 @@ input {
     color: inherit;
     font: inherit;
     appearance: none;
-    margin-right: 1rem;
 }
 
 input[type="checkbox"]:checked {
@@ -105,6 +104,10 @@ input[type="checkbox"]:checked {
 
 input[type="checkbox"]:checked {
     background-color: var(--fg-color);
+}
+
+label {
+    padding: 1rem;
 }
 
 select {

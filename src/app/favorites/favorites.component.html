@@ -2,6 +2,7 @@
     <h2>My Favorites</h2>
 </header>
 <main>
+    <app-filters (submitEvent)="getFavorites($event)"></app-filters>
     <table>
         <thead>
             <tr>

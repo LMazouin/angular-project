@@ -13,7 +13,7 @@ export class ModalComponent implements OnInit {
     ngOnInit(): void {}
 
     onClose(isOpen: boolean): void {
-        this.closeModalEvent.emit(false);
-        this.open = false;
+        this.closeModalEvent.emit(isOpen);
+        this.open = isOpen;
     }
 }

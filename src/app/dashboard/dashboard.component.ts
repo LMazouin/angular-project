@@ -3,6 +3,16 @@ import { Component, OnInit } from "@angular/core";
 import { Movie } from "../movie";
 import { MovieService } from "../movie.service";
 
+function comparator(a: Movie, b: Movie): number {
+    if (a.rating > b.rating) {
+        return -1;
+    } else if (a.rating < b.rating) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 @Component({
     selector: "app-dashboard",
     templateUrl: "./dashboard.component.html",
@@ -18,6 +28,6 @@ export class DashboardComponent implements OnInit {
     }
 
     getMovies(): void {
-        this.movies = this.movieService.getMovies({});
+        this.movies = this.movieService.getMovies({}).sort(comparator).slice(0, 5);
     }
 }
