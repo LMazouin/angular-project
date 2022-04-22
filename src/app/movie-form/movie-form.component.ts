@@ -30,7 +30,8 @@ export class MovieFormComponent implements OnInit {
         this.isNewMovie = !this.id;
 
         if (!this.isNewMovie) {
-            this.movieService.getMovie(this.id).subscribe((movie: Movie) => this.movieForm.patchValue(movie));
+            const movie = this.movieService.getMovie(this.id);
+            this.movieForm.patchValue(movie || {});
         }
     }
 
@@ -38,13 +39,16 @@ export class MovieFormComponent implements OnInit {
         this.closeModalEvent.emit(false);
         const { name, category, watched, rating } = this.movieForm.value;
         if (this.isNewMovie) {
-            this.movieService
-                .addMovie({ name, category, watched, rating: watched ? rating : 0 })
-                .subscribe((movie) => console.log(movie));
+            this.movieService.addMovie({ name, category, watched, rating: watched ? rating : 0 });
         } else {
-            this.movieService
-                .updateMovie({ id: this.id, name, category, watched, rating: watched ? rating : 0, favorite: false })
-                .subscribe((movie) => console.log(movie));
+            this.movieService.updateMovie({
+                id: this.id,
+                name,
+                category,
+                watched,
+                rating: watched ? rating : 0,
+                favorite: false,
+            });
         }
         this.router.navigate(["movies"]).then(() => {
             window.location.reload();

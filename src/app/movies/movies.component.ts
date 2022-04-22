@@ -33,7 +33,7 @@ export class MoviesComponent implements OnInit {
     }
 
     getMovies({ name, category, rating }: { name?: string; category?: string; rating?: number }): void {
-        this.movieService.getMovies({ name, category, rating }).subscribe((movies) => (this.movies = movies));
+        this.movies = this.movieService.getMovies({ name, category, rating });
     }
 
     onClose(isOpen: boolean): void {

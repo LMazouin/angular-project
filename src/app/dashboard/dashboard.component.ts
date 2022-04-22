@@ -18,6 +18,6 @@ export class DashboardComponent implements OnInit {
     }
 
     getMovies(): void {
-        this.movieService.getMovies({}).subscribe((movies) => (this.movies = movies));
+        this.movies = this.movieService.getMovies({});
     }
 }

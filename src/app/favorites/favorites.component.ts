@@ -16,6 +16,6 @@ export class FavoritesComponent implements OnInit {
         this.getFavorites();
     }
     getFavorites(): void {
-        this.movieService.getMovies({ favorite: true }).subscribe((favorites) => (this.favorites = favorites));
+        this.favorites = this.movieService.getMovies({ favorite: true });
     }
 }

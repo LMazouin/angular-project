@@ -26,25 +26,25 @@ export class MovieDetailComponent implements OnInit {
 
     getMovie(): void {
         const id = this.route.snapshot.paramMap.get("id") || "";
-        this.movieService.getMovie(id).subscribe((movie: Movie) => (this.movie = movie));
+        this.movie = this.movieService.getMovie(id);
     }
 
     deleteMovie(): void {
-        this.movieService.deleteMovie(this.movie?.id || "").subscribe((movie) => console.log(movie));
+        this.movieService.deleteMovie(this.movie?.id || "");
         this.router.navigate(["movies"]).then(() => {
             window.location.reload();
         });
     }
 
     addToFavorites(): void {
-        this.movieService.addToFavorites(this.movie?.id || "").subscribe((favorite) => console.log(favorite));
+        if (this.movie) this.movieService.addToFavorites(this.movie);
         this.router.navigate(["favorites"]).then(() => {
             window.location.reload();
         });
     }
 
     removeFromFavorites(): void {
-        this.movieService.removeFromFavorites(this.movie?.id || "").subscribe((favorite) => console.log(favorite));
+        if (this.movie) this.movieService.removeFromFavorites(this.movie);
         this.router.navigate(["favorites"]).then(() => {
             window.location.reload();
         });

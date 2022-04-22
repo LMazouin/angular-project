@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { MessageService } from "./message.service";
+import { LocalStorageService } from "./localstorage.service";
 import { Movie } from "./movie";
 import { NewMovie } from "./types";
 
@@ -22,51 +23,39 @@ export class MovieService {
         headers: new HttpHeaders({ "Content-Type": "application/json" }),
     };
 
-    constructor(private messageService: MessageService, private http: HttpClient) {}
+    constructor(
+        private localStorageService: LocalStorageService,
+        private messageService: MessageService,
+        private http: HttpClient
+    ) {}
 
-    getMovies(query: Query): Observable<Movie[]> {
-        this.messageService.add("MovieService: fetched movies");
-        const queryParams = Object.entries(query)
-            .filter(([key, value]) => key && value)
-            .map(([key, value]) => {
-                switch (typeof value) {
-                    case "number":
-                        return `${key}=${value}`;
-                    case "boolean":
-                        return `${key}=${value}`;
-                    case "string":
-                        return `${key}_like=${value}`;
-                    default:
-                        return "";
-                }
-            })
-            .join("&");
-        return this.http.get<Movie[]>(`${this.url}/movies?${queryParams}`);
+    getMovies(query: Query): Movie[] {
+        return this.localStorageService.getMovies();
     }
 
-    addMovie(newMovie: NewMovie): Observable<Movie> {
+    addMovie(newMovie: NewMovie): void {
         const movie = new Movie(newMovie);
-        return this.http.post<Movie>(`${this.url}/movies`, movie, this.httpOptions);
+        this.localStorageService.addMovie(movie);
     }
 
-    updateMovie(movie: Movie): Observable<Movie> {
-        return this.http.put<Movie>(`${this.url}/movies/${movie.id}`, movie, this.httpOptions);
+    updateMovie(movie: Movie): void {
+        this.localStorageService.updateMovie(movie);
     }
 
-    deleteMovie(id: string): Observable<Movie> {
-        return this.http.delete<Movie>(`${this.url}/movies/${id}`, this.httpOptions);
+    deleteMovie(id: string): void {
+        this.localStorageService.deleteMovie(id);
     }
 
-    getMovie(id: string): Observable<Movie> {
+    getMovie(id: string): Movie | undefined {
         this.messageService.add(`MovieService: fetched movie id=${id}`);
-        return this.http.get<Movie>(`${this.url}/movies/${id}`, this.httpOptions);
+        return this.localStorageService.getMovie(id);
     }
 
-    addToFavorites(id: string): Observable<Movie> {
-        return this.http.put<Movie>(`${this.url}/movie/${id}`, { favorite: true }, this.httpOptions);
+    addToFavorites(movie: Movie): void {
+        this.localStorageService.updateMovie({ ...movie, favorite: true });
     }
 
-    removeFromFavorites(id: string): Observable<Movie> {
-        return this.http.put<Movie>(`${this.url}/movie/${id}`, { favorite: false }, this.httpOptions);
+    removeFromFavorites(movie: Movie): void {
+        this.localStorageService.updateMovie({ ...movie, favorite: false });
     }
 }
